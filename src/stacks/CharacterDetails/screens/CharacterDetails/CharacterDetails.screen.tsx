@@ -1,4 +1,4 @@
-import {ActivityIndicator, Text, View} from 'react-native';
+import {ActivityIndicator, Button, Text, View} from 'react-native';
 import React from 'react';
 import {styles} from './CharacterDetails.styled';
 import {CharacterDetailsStackParamList} from '../../CharacterDetails.routes';
@@ -14,7 +14,7 @@ const CharacterDetailsScreen = ({
   route,
   navigation,
 }: CharacterDetailsScreenProps) => {
-  const {data, isLoading} = useCharacterDetails({route, navigation});
+  const {data, isLoading, goBack} = useCharacterDetails({route, navigation});
 
   if (isLoading) {
     return (
@@ -33,6 +33,7 @@ const CharacterDetailsScreen = ({
       <Text>{'ID:' + data?.id}</Text>
       <Text>{data?.name}</Text>
       <Text>{data?.url}</Text>
+      <Button onPress={goBack} title="Go back" />
     </View>
   );
 };

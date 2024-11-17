@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator<CharacterListStackParamList>();
 
 export const CharacterListStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false, animation: 'none'}}>
       <Stack.Screen
         name={CharacterListStackRoutes.CharacterListScreen}
         component={CharacterListScreen} //bugfix: change from children to component: async data now rerenders Screen component correctly
@@ -19,7 +19,6 @@ export const CharacterListStack = () => {
       <Stack.Screen
         name={CharacterListStackRoutes.CharacterDetailsStack}
         component={CharacterDetailsStack}
-        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

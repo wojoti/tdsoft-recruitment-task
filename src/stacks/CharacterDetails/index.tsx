@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator<CharacterDetailsStackParamList>();
 
 export const CharacterDetailsStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={CharacterDetailsStackRoutes.CharacterDetailsScreen}
         component={CharacterDetailsScreen}

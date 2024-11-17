@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 export const FavoriteCharactersStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={FavoriteCharactersStackRoutes.FavoriteCharactersScreen}
         children={FavoriteCharactersScreen}
