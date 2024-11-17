@@ -1,21 +1,24 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {CharacterListStackRoutes} from './CharacterList.routes';
+import {
+  CharacterListStackParamList,
+  CharacterListStackRoutes,
+} from './CharacterList.routes';
 import {CharacterListScreen} from './screens';
 import {CharacterDetailsStack} from '../CharacterDetails';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<CharacterListStackParamList>();
 
 export const CharacterListStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name={CharacterListStackRoutes.CharacterListScreen}
-        children={CharacterListScreen}
+        component={CharacterListScreen} //bugfix: change from children to component: async data now rerenders Screen component correctly
       />
       <Stack.Screen
         name={CharacterListStackRoutes.CharacterDetailsStack}
-        children={CharacterDetailsStack}
+        component={CharacterDetailsStack}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

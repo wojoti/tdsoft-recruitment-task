@@ -1,21 +1,26 @@
-import {View, Text, Button} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {styles} from './CharacterList.styled';
-import {useNavigation} from '@react-navigation/native';
-import {CharacterListStackNavigationProp} from '../../CharacterList.routes';
+import {useCharacterList} from '../../hooks/ui/useCharacterList';
+import CharacterFlatList from '../../../../components/CharacterFlatList/CharacterFlatList';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {CharacterListStackParamList} from '../../CharacterList.routes';
 
-const CharacterListScreen = () => {
-  const {navigate} = useNavigation<CharacterListStackNavigationProp>();
+export type CharacterListScreenProps = NativeStackScreenProps<
+  CharacterListStackParamList,
+  'CharacterListScreen'
+>;
+
+const CharacterListScreen = ({route, navigation}: CharacterListScreenProps) => {
+  const {charactersData, getMoreCharacters, isLoading, showCharacterDetails} =
+    useCharacterList({route, navigation});
   return (
     <View style={styles.container}>
-      <Text>Implement CharactersListScreen</Text>
-      <Button
-        title="Navigate to Details screen"
-        onPress={(): void => {
-          navigate('CharacterDetailsStack', {
-            screen: 'CharacterDetailsScreen',
-          });
-        }}
+      <CharacterFlatList
+        data={charactersData}
+        refresh={getMoreCharacters}
+        isLoading={isLoading}
+        showCharacterDetails={showCharacterDetails}
       />
     </View>
   );
