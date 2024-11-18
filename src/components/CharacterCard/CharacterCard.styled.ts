@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
 
-export const conditionalStyles = (liked: boolean) =>
+export const conditionalLikeStyles = (liked: boolean) =>
   StyleSheet.create({
-    background: {backgroundColor: liked ? '#DAE4DC' : 'white'},
+    color: {
+      backgroundColor: liked ? '#162C1B' : '#224229',
+    },
   });
 
 export const styles = StyleSheet.create({
@@ -21,24 +23,44 @@ export const styles = StyleSheet.create({
     color: ' #162C1B',
     letterSpacing: -0.5,
   },
-  textWrapper: {padding: 8, gap: 4},
+  mainValue: {
+    fontFamily: 'Inter',
+    fontWeight: 700,
+    fontSize: 36,
+    lineHeight: 44,
+    color: '#162C1B',
+    letterSpacing: -0.5,
+  },
+  textWrapper: {
+    alignItems: 'flex-start',
+    padding: 8,
+    gap: 4,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#F4F6F5',
+    backgroundColor: '#F4F6F5',
+    flex: 1,
+  },
+  mainTextWrapper: {padding: 8, gap: 4},
   imageContainer: {
     position: 'relative',
-    width: 200,
-    height: 200,
+    aspectRatio: 1,
     borderWidth: 1,
     borderColor: '#224229',
     borderRadius: 24,
     overflow: 'hidden',
+    width: '100%',
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: undefined,
+    aspectRatio: 1,
     resizeMode: 'cover',
   },
-  shrink: {flexShrink: 1},
+  shrink: {flexShrink: 1, gap: 16},
   relative: {
     position: 'relative',
+    marginVertical: 16,
   },
   shadow: {
     position: 'absolute',
@@ -50,33 +72,35 @@ export const styles = StyleSheet.create({
     borderRadius: 24,
   },
   content: {
-    backgroundColor: '#F4F6F5',
+    backgroundColor: 'white',
     borderRadius: 24,
-    flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#224229',
-    padding: 12,
-    gap: 24,
+    padding: 24,
+    gap: 16,
   },
   likeButton: {
-    position: 'absolute',
-    bottom: 6,
-    right: 6,
-    paddingRight: 16,
-    paddingLeft: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#224229',
     flexDirection: 'row',
+    justifyContent: 'center',
+    borderRadius: 100,
+    paddingLeft: 12,
+    paddingRight: 16,
+    paddingVertical: 8,
+    width: '100%',
     gap: 4,
   },
   likeText: {
-    color: '#224229',
+    color: 'white',
     textTransform: 'uppercase',
     fontSize: 14,
     lineHeight: 18,
     fontFamily: 'DMMonoRegular',
+  },
+  gap: {gap: 16},
+  horizontalGap: {
+    gap: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

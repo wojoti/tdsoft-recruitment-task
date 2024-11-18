@@ -1,12 +1,14 @@
-import {useMemo, useState} from 'react';
+import {useMemo} from 'react';
 import {useGetCharacters} from '../services/useGetCharacters';
 import {CharacterListScreenProps} from '../../screens/CharacterList/CharacterList.screen';
+import {likeAtom} from '../../../../store/store';
+import {useAtom} from 'jotai';
 
 export const useCharacterList = ({navigation}: CharacterListScreenProps) => {
   const {data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading} =
     useGetCharacters('');
 
-  const [likedIds, setlikedIds] = useState<{[key: string]: boolean}>({});
+  const [likedIds, setlikedIds] = useAtom<{[key: string]: boolean}>(likeAtom);
 
   const charactersData = useMemo(() => {
     if (!data?.pages) {
