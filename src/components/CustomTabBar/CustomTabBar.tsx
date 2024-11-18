@@ -3,6 +3,11 @@ import React from 'react';
 import {View} from 'react-native';
 import Logo from '../Logo/Logo';
 import CustomTabItem from '../CustomTabItem/CustomTabItem';
+import {
+  conditionalHideStyles,
+  conditionalInsetStyles,
+  styles,
+} from './CustomTabBar.styled';
 
 const CustomTabBar = ({
   state,
@@ -13,14 +18,10 @@ const CustomTabBar = ({
   //hiding Bottom tabs when character details are active
   const characterState = state.routes.find(el => el.name === 'Characters');
   const hideTabs = !!characterState?.state?.index;
+
   return (
-    <View style={[{paddingBottom: insets.bottom, backgroundColor: '#162C1B'}]}>
-      <View
-        style={{
-          flexDirection: 'row',
-          height: 70,
-          display: hideTabs ? 'none' : 'flex',
-        }}>
+    <View style={conditionalInsetStyles(insets.bottom).wrapper}>
+      <View style={conditionalHideStyles(hideTabs).wrapper}>
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
           const label =
@@ -50,13 +51,7 @@ const CustomTabBar = ({
           );
         })}
       </View>
-
-      <View
-        style={{
-          backgroundColor: '#162C1B',
-          alignItems: 'center',
-          paddingVertical: 24,
-        }}>
+      <View style={styles.logoWrapper}>
         <Logo />
       </View>
     </View>

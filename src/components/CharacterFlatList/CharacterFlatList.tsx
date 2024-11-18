@@ -1,12 +1,16 @@
 import React from 'react';
-import {View, FlatList, Text, ActivityIndicator, Pressable} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {Character} from '../../types';
+import Loader from '../Loader/Loader';
+import CharacterFlatListItem from '../CharacterFlatListItem/CharacterFlatListItem';
+import {styles} from './CharacterFlatList.styled';
 
 interface ICharacterFlatList {
   data: Character[];
   refresh: () => void;
   isLoading: boolean;
   showCharacterDetails: (id: number) => void;
+  likeCharacter: (id: number) => void;
 }
 
 const CharacterFlatList = ({
@@ -14,36 +18,25 @@ const CharacterFlatList = ({
   refresh,
   isLoading,
   showCharacterDetails,
+  likeCharacter,
 }: ICharacterFlatList) => {
   if (isLoading) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-        }}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
+    return <Loader />;
   }
   return (
-    <View
-      style={{
-        flex: 1,
-        width: '100%',
-      }}>
+    <View style={styles.wrapper}>
       <FlatList
         data={data}
         keyExtractor={item => String(item.id)}
         onEndReached={refresh}
-        renderItem={({item}) => {
-          return (
-            <Pressable onPress={() => showCharacterDetails(item.id)}>
-              <Text>{`ID: ${item?.id}`}</Text>
-              <Text>{`Name: ${item?.name}`}</Text>
-            </Pressable>
-          );
-        }}
+        contentContainerStyle={styles.contentContainer}
+        renderItem={({item}) => (
+          <CharacterFlatListItem
+            character={item}
+            onItemPress={showCharacterDetails}
+            onLikePress={likeCharacter}
+          />
+        )}
       />
     </View>
   );

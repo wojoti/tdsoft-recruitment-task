@@ -12,8 +12,13 @@ export type CharacterListScreenProps = NativeStackScreenProps<
 >;
 
 const CharacterListScreen = ({route, navigation}: CharacterListScreenProps) => {
-  const {charactersData, getMoreCharacters, isLoading, showCharacterDetails} =
-    useCharacterList({route, navigation});
+  const {
+    charactersData,
+    getMoreCharacters,
+    isLoading,
+    showCharacterDetails,
+    likeCharacter,
+  } = useCharacterList({route, navigation});
   return (
     <View style={styles.container}>
       <CharacterFlatList
@@ -21,6 +26,7 @@ const CharacterListScreen = ({route, navigation}: CharacterListScreenProps) => {
         refresh={getMoreCharacters}
         isLoading={isLoading}
         showCharacterDetails={showCharacterDetails}
+        likeCharacter={likeCharacter}
       />
     </View>
   );

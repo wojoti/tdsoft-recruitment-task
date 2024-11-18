@@ -17,6 +17,7 @@ export type Character = {
   episode: string[];
   url: string;
   created: string;
+  like?: boolean;
 };
 
 export type CharacterApiResponse = {

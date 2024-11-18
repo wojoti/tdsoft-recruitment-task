@@ -1,6 +1,7 @@
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 import Icon, {IconType} from '../Icon/Icon';
+import {conditionalFocusedStyles, styles} from './CustomTabItem.styled';
 
 interface ICustomTabItem {
   label: string;
@@ -16,15 +17,7 @@ enum BottomIconType {
 
 const CustomTabItem = ({label, isFocused, onPress, name}: ICustomTabItem) => {
   return (
-    <Pressable
-      onPress={onPress}
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        gap: 4,
-      }}>
+    <Pressable onPress={onPress} style={styles.wrapper}>
       <Icon
         icon={
           IconType[
@@ -37,27 +30,9 @@ const CustomTabItem = ({label, isFocused, onPress, name}: ICustomTabItem) => {
         height={16}
         color={isFocused ? '#ffffff' : '#DAE4DC'}
       />
-      <Text
-        style={[
-          {
-            color: isFocused ? '#ffffff' : '#DAE4DC',
-            fontSize: 14,
-            textTransform: 'uppercase',
-            fontFamily: 'DMMonoRegular',
-          },
-        ]}>
-        {label}
-      </Text>
+      <Text style={conditionalFocusedStyles(isFocused).text}>{label}</Text>
 
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          width: '100%',
-          height: 1,
-          backgroundColor: isFocused ? '#ffffff' : '#224229',
-        }}
-      />
+      <View style={conditionalFocusedStyles(isFocused).bottomLine} />
     </Pressable>
   );
 };
