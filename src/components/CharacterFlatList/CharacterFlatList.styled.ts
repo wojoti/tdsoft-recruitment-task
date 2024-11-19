@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
   contentContainer: {
     gap: 24,
     paddingVertical: 16,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
   },
 });

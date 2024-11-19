@@ -7,7 +7,7 @@ import {styles} from './CharacterFlatList.styled';
 
 interface ICharacterFlatList {
   data: Character[];
-  refresh: () => void;
+  refresh?: () => void;
   isLoading: boolean;
   showCharacterDetails: (id: number) => void;
   likeCharacter: (id: number) => void;

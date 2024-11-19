@@ -1,12 +1,16 @@
-import {useMemo} from 'react';
+import {useMemo, useState} from 'react';
 import {useGetCharacters} from '../services/useGetCharacters';
 import {CharacterListScreenProps} from '../../screens/CharacterList/CharacterList.screen';
 import {likeAtom} from '../../../../store/store';
 import {useAtom} from 'jotai';
+import {FilterGroup, SelectedFilters} from '../../../../types';
 
 export const useCharacterList = ({navigation}: CharacterListScreenProps) => {
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [appliedFilters, setAppliedFilters] = useState<SelectedFilters>({});
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({});
   const {data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading} =
-    useGetCharacters('');
+    useGetCharacters(searchValue, appliedFilters);
 
   const [likedIds, setlikedIds] = useAtom<{[key: string]: boolean}>(likeAtom);
 
@@ -39,11 +43,38 @@ export const useCharacterList = ({navigation}: CharacterListScreenProps) => {
       return prev[id] ? prevData : {...prev, [id]: true};
     });
   };
+
+  const availableFilters: FilterGroup = {
+    status: ['Alive', 'Dead', 'Unknown'],
+    species: ['Human', 'Humanoid'],
+  };
+
+  const setSelected = (filterName: string, filter: string) => {
+    setSelectedFilters(prev => {
+      const prevData = {...prev};
+      delete prevData[filterName];
+      return prev[filterName] ? prevData : {...prev, [filterName]: filter};
+    });
+  };
+  const onResetPress = () => {
+    setSelectedFilters({});
+    setAppliedFilters({});
+  };
+  const onApplyPress = () => {
+    setAppliedFilters(selectedFilters);
+  };
   return {
     charactersData,
     getMoreCharacters,
     isLoading,
     showCharacterDetails,
     likeCharacter,
+    searchValue,
+    setSearchValue,
+    availableFilters,
+    setSelected,
+    selectedFilters,
+    onResetPress,
+    onApplyPress,
   };
 };

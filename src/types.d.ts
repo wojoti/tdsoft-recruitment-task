@@ -29,3 +29,11 @@ export type CharacterApiResponse = {
   };
   results: Character[];
 };
+
+export type FilterGroup = {
+  [key: string]: string[];
+};
+
+export type SelectedFilters = {
+  [key: string]: string;
+};
