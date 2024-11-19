@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {CharacterListStack} from '../CharacterList';
-import {FavoriteCharactersStack} from '../FavoriteCharacters';
+import {CharacterListScreen} from './screens/CharacterList';
+import {FavoriteCharactersScreen} from './screens/FavoriteCharacters';
 import Logo from '../../components/Logo/Logo';
 import CustomTabBar from '../../components/CustomTabBar/CustomTabBar';
 import {Platform} from 'react-native';
@@ -24,12 +24,12 @@ export const TabNavigationStack = () => {
       }}>
       <Tab.Screen
         name="Characters"
-        component={CharacterListStack}
+        component={CharacterListScreen}
         options={{tabBarLabel: 'All characters'}}
       />
       <Tab.Screen
         name="Favorites"
-        component={FavoriteCharactersStack}
+        component={FavoriteCharactersScreen}
         options={{tabBarLabel: 'Liked characters'}}
       />
     </Tab.Navigator>
