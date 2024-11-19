@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 export const conditionalCrossStyle = (pressed: boolean) =>
   StyleSheet.create({
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   topText: {
     color: '#162C1B',
     fontFamily: 'Inter',
-    fontWeight: 800,
+    fontWeight: 500,
     fontSize: 36,
     lineHeight: 44,
     letterSpacing: -1,
@@ -52,12 +52,12 @@ export const styles = StyleSheet.create({
   iconPosition: {
     position: 'absolute',
     left: 10,
-    top: 11,
+    top: Platform.OS === 'ios' ? 9 : 11,
   },
   crossPosition: {
     position: 'absolute',
     right: 10,
-    top: 11,
+    top: Platform.OS === 'ios' ? 9 : 11,
     borderRadius: 4,
   },
   filterButton: {

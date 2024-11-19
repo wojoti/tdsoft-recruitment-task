@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   likedText: {
     color: '#162C1B',
     fontFamily: 'Inter',
-    fontWeight: 800,
+    fontWeight: 500,
     fontSize: 36,
     lineHeight: 44,
     letterSpacing: -1,
