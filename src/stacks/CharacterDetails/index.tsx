@@ -1,16 +1,20 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {CharacterDetailsStackRoutes} from './CharacterDetails.routes';
+import {
+  CharacterDetailsStackParamList,
+  CharacterDetailsStackRoutes,
+} from './CharacterDetails.routes';
 import {CharacterDetailsScreen} from './screens';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<CharacterDetailsStackParamList>();
 
 export const CharacterDetailsStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={CharacterDetailsStackRoutes.CharacterDetailsScreen}
-        children={CharacterDetailsScreen}
+        component={CharacterDetailsScreen}
+        initialParams={{characterId: 0}}
       />
     </Stack.Navigator>
   );
