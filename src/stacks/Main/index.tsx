@@ -8,16 +8,15 @@ const Tab = createNativeStackNavigator<MainStackParamList>();
 
 export const MainStack = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{headerShown: false, animation: 'ios_from_right'}}>
       <Tab.Screen
         name={MainStackRoutes.TabNavigationStack}
         component={TabNavigationStack}
-        options={{headerShown: false}}
       />
       <Tab.Screen
         name={MainStackRoutes.CharacterDetailsStack}
         component={CharacterDetailsStack}
-        options={{headerShown: false}}
       />
     </Tab.Navigator>
   );
