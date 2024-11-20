@@ -1,15 +1,11 @@
 import {Text, View} from 'react-native';
 import React from 'react';
 import {styles} from './FavoriteCharacters.styled';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {FavoriteCharactersStackParamList} from '../../FavoriteCharacters.routes';
-import {useFavoriteCharacters} from '../../hooks/ui/useFavoriteCharacters';
 import CharacterFlatList from '../../../../components/CharacterFlatList/CharacterFlatList';
+import {useFavoriteCharacters} from './hooks/ui/useFavoriteCharacters';
+import {TabScreenProps} from '../../TabNavigation.routes';
 
-export type FavoriteCharactersScreenProps = NativeStackScreenProps<
-  FavoriteCharactersStackParamList,
-  'FavoriteCharactersScreen'
->;
+export type FavoriteCharactersScreenProps = TabScreenProps;
 
 const FavoriteCharactersScreen = ({
   route,

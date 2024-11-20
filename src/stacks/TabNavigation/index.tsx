@@ -6,8 +6,12 @@ import {FavoriteCharactersScreen} from './screens/FavoriteCharacters';
 import Logo from '../../components/Logo/Logo';
 import CustomTabBar from '../../components/CustomTabBar/CustomTabBar';
 import {Platform} from 'react-native';
+import {
+  TabNavigationStackParamList,
+  TabNavigationStackRoutes,
+} from './TabNavigation.routes';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TabNavigationStackParamList>();
 
 export const TabNavigationStack = () => {
   return (
@@ -23,12 +27,12 @@ export const TabNavigationStack = () => {
         },
       }}>
       <Tab.Screen
-        name="Characters"
+        name={TabNavigationStackRoutes.CharacterListScreen}
         component={CharacterListScreen}
         options={{tabBarLabel: 'All characters'}}
       />
       <Tab.Screen
-        name="Favorites"
+        name={TabNavigationStackRoutes.FavoriteCharactersScreen}
         component={FavoriteCharactersScreen}
         options={{tabBarLabel: 'Liked characters'}}
       />

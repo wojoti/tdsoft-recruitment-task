@@ -5,17 +5,13 @@ import {
   conditionalFilterStyles,
   styles,
 } from './CharacterList.styled';
-import {useCharacterList} from '../../hooks/ui/useCharacterList';
 import CharacterFlatList from '../../../../components/CharacterFlatList/CharacterFlatList';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {CharacterListStackParamList} from '../../CharacterList.routes';
 import Icon, {IconType} from '../../../../components/Icon/Icon';
 import FilterModal from '../../../../components/FilterModal/FilterModal';
+import {useCharacterList} from './hooks/ui/useCharacterList';
+import {TabScreenProps} from '../../TabNavigation.routes';
 
-export type CharacterListScreenProps = NativeStackScreenProps<
-  CharacterListStackParamList,
-  'CharacterListScreen'
->;
+export type CharacterListScreenProps = TabScreenProps;
 
 const CharacterListScreen = ({route, navigation}: CharacterListScreenProps) => {
   const {

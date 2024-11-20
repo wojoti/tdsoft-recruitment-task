@@ -1,9 +1,9 @@
 import {useMemo, useState} from 'react';
 import {useGetCharacters} from '../services/useGetCharacters';
-import {CharacterListScreenProps} from '../../screens/CharacterList/CharacterList.screen';
-import {likeAtom} from '../../../../store/store';
+import {likeAtom} from '../../../../../../store/store';
 import {useAtom} from 'jotai';
-import {FilterGroup, SelectedFilters} from '../../../../types';
+import {FilterGroup, SelectedFilters} from '../../../../../../types';
+import {CharacterListScreenProps} from '../../CharacterList.screen';
 
 export const useCharacterList = ({navigation}: CharacterListScreenProps) => {
   const [searchValue, setSearchValue] = useState<string>('');

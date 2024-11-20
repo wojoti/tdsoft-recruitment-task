@@ -1,6 +1,6 @@
 import {useInfiniteQuery} from '@tanstack/react-query';
-import {getCharacters} from '../../../../api/services/RAMService';
-import {CharacterApiResponse, SelectedFilters} from '../../../../types';
+import {getCharacters} from '../../../../../../api/services/RAMService';
+import {CharacterApiResponse, SelectedFilters} from '../../../../../../types';
 
 export const useGetCharacters = (
   name: string,

@@ -1,9 +1,9 @@
 import {useGetLikedCharacters} from '../services/useGetLikedCharacters';
-import {FavoriteCharactersScreenProps} from '../../screens/FavoriteCharacters/FavoriteCharacters.screen';
-import {likeAtom} from '../../../../store/store';
+import {likeAtom} from '../../../../../../store/store';
 import {useAtom} from 'jotai';
 import {useMemo} from 'react';
-import {Character} from '../../../../types';
+import {Character} from '../../../../../../types';
+import {FavoriteCharactersScreenProps} from '../../FavoriteCharacters.screen';
 
 export const useFavoriteCharacters = ({
   navigation,
